@@ -11,7 +11,6 @@ abstract class Agent {
         CURLOPT_USERAGENT => 'VSCO/3635 CFNetwork/758.0.2 Darwin/15.0.0',
     ];
 
-    //lol
     private static function buildBountrySegment($delimiter, $name, $content) {
         return "\nContent-Disposition: form-data; name=\"" . $name . "\"\n\n" . $content . "\n--" . $delimiter;
     }
@@ -35,7 +34,7 @@ abstract class Agent {
 
         if ($result === false || curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
             curl_close($ch);
-            throw new Exception($result->errorType);
+			print "Error occurred. Error Code: " . $result->errorType . "\n";
         }
 
         curl_close($ch);
@@ -84,7 +83,7 @@ abstract class Agent {
 
         if ($result === false || curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
             curl_close($ch);
-            throw new Exception($result->errorType);
+            print "Error occurred. Error Code: " . $result->errorType . "\n";
         }
 
         curl_close($ch);
